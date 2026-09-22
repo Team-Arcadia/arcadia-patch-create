@@ -24,7 +24,7 @@ public class ArcadiaPatchCreate {
         fr.arcadia.arcadiapatchcreate.diagnostic.DiagnosticEvents.register(modEventBus);
         LOGGER.info("[ArcadiaPatchCreate] Enabled validated Create performance patches.");
         LOGGER.info(
-            "[ArcadiaPatchCreate] Target availability: belt={}, fluid={}, createHeatJs={}, itemDrain={}, dispatch={}, crafter={}, redstoneLink={}, capabilityGuard={}.",
+            "[ArcadiaPatchCreate] Target availability: belt={}, fluid={}, createHeatJs={}, itemDrain={}, dispatch={}, crafter={}, redstoneLink={}, capabilityGuard={}, copycatMaterial={}.",
             PatchRuntime.isBeltPatchAvailable(),
             PatchRuntime.isFluidPatchAvailable(),
             PatchRuntime.isHeatJsPatchAvailable(),

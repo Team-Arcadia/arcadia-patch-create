@@ -4,7 +4,9 @@
   "package": "fr.arcadia.arcadiapatchcreate.mixin",
   "plugin": "fr.arcadia.arcadiapatchcreate.bootstrap.ArcadiaMixinPlugin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "MixinCopycatMaterialItemStorage"
+  ],
   "server": [
     "ContinuousSeparationManifoldAccessor",
     "MixinAbstractContraptionEntity",
