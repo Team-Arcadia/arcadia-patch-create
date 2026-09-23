@@ -152,6 +152,7 @@ public final class ArcadiaMixinPlugin implements IMixinConfigPlugin {
                 isRedstoneLinkTargetCompatible();
             case "MixinMechanicalCrafterBlock", "MixinMechanicalCrafterBlockEntity" ->
                 isCrafterSignalTargetCompatible();
+            case "MixinCopycatMaterialItemStorage" -> isCopycatMaterialTargetCompatible();
             default -> true;
         };
     }
