@@ -5,7 +5,8 @@
   "plugin": "fr.arcadia.arcadiapatchcreate.bootstrap.ArcadiaMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "MixinCopycatMaterialItemStorage"
+    "MixinCopycatMaterialItemStorage",
+    "MixinIronsAlchemistCauldron"
   ],
   "server": [
     "ContinuousSeparationManifoldAccessor",
