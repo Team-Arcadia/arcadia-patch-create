@@ -1,5 +1,6 @@
 package fr.arcadia.arcadiapatchcreate;
 
+import fr.arcadia.arcadiapatchcreate.bootstrap.ArcadiaMixinPlugin;
 import fr.arcadia.arcadiapatchcreate.command.ArcadiaPatchCommands;
 import fr.arcadia.arcadiapatchcreate.runtime.CreatePhysicalItemSupport;
 import fr.arcadia.arcadiapatchcreate.runtime.PatchConfigStore;
@@ -32,7 +33,8 @@ public class ArcadiaPatchCreate {
             PatchRuntime.isBehaviourDispatchPatchAvailable(),
             PatchRuntime.isCrafterSignalPatchAvailable(),
             PatchRuntime.isRedstoneLinkPatchAvailable(),
-            PatchRuntime.isCapabilityGuardAvailable()
+            PatchRuntime.isCapabilityGuardAvailable(),
+            ArcadiaMixinPlugin.isCopycatMaterialTargetCompatible()
         );
     }
 
