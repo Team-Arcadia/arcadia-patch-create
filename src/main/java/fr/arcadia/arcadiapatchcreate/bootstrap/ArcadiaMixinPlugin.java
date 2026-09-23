@@ -49,6 +49,9 @@ public final class ArcadiaMixinPlugin implements IMixinConfigPlugin {
     private static final String SMART_BLOCK_ENTITY =
         "com.simibubi.create.foundation.blockEntity.SmartBlockEntity";
 
+    private static final String COPYCAT_MATERIAL_STORAGE =
+        "com.copycatsplus.copycats.foundation.copycat.multistate.MaterialItemStorage";
+
     // Fingerprint the exact implementations whose remaining bytecode is skipped or
     // whose result is reused. A future upstream build may keep every signature while
     // moving an anchor or adding a side effect; in that case the patch must fail open.
@@ -149,6 +152,7 @@ public final class ArcadiaMixinPlugin implements IMixinConfigPlugin {
                 isRedstoneLinkTargetCompatible();
             case "MixinMechanicalCrafterBlock", "MixinMechanicalCrafterBlockEntity" ->
                 isCrafterSignalTargetCompatible();
+            case "MixinCopycatMaterialItemStorage" -> isCopycatMaterialTargetCompatible();
             default -> true;
         };
     }
@@ -215,6 +219,18 @@ public final class ArcadiaMixinPlugin implements IMixinConfigPlugin {
      * block still forwards neighbour updates. Both classes are fingerprinted and both anchors
      * verified, so an upstream change disables the cache rather than silencing a redstone pulse.
      */
+    /**
+     * Copycats+ is optional, and only its lookup method is patched: no fingerprint is
+     * pinned, so the guard keeps working across Copycats+ builds as long as the method and
+     * the nested {@code MaterialItem} type keep their shape.
+     */
+    public static boolean isCopycatMaterialTargetCompatible() {
+        return shape(COPYCAT_MATERIAL_STORAGE).hasMethod(new Member(
+            "getMaterialItem",
+            "(Ljava/lang/String;)Lcom/copycatsplus/copycats/foundation/copycat/multistate/MaterialItemStorage$MaterialItem;"
+        ));
+    }
+
     public static boolean isCrafterSignalTargetCompatible() {
         ClassShape block = shape(CRAFTER_BLOCK);
         ClassShape entity = shape(CRAFTER_BLOCK_ENTITY);

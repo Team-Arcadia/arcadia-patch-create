@@ -1,5 +1,6 @@
 package fr.arcadia.arcadiapatchcreate;
 
+import fr.arcadia.arcadiapatchcreate.bootstrap.ArcadiaMixinPlugin;
 import fr.arcadia.arcadiapatchcreate.command.ArcadiaPatchCommands;
 import fr.arcadia.arcadiapatchcreate.runtime.CreatePhysicalItemSupport;
 import fr.arcadia.arcadiapatchcreate.runtime.PatchConfigStore;
@@ -24,7 +25,7 @@ public class ArcadiaPatchCreate {
         fr.arcadia.arcadiapatchcreate.diagnostic.DiagnosticEvents.register(modEventBus);
         LOGGER.info("[ArcadiaPatchCreate] Enabled validated Create performance patches.");
         LOGGER.info(
-            "[ArcadiaPatchCreate] Target availability: belt={}, fluid={}, createHeatJs={}, itemDrain={}, dispatch={}, crafter={}, redstoneLink={}, capabilityGuard={}.",
+            "[ArcadiaPatchCreate] Target availability: belt={}, fluid={}, createHeatJs={}, itemDrain={}, dispatch={}, crafter={}, redstoneLink={}, capabilityGuard={}, copycatMaterial={}.",
             PatchRuntime.isBeltPatchAvailable(),
             PatchRuntime.isFluidPatchAvailable(),
             PatchRuntime.isHeatJsPatchAvailable(),
@@ -32,7 +33,8 @@ public class ArcadiaPatchCreate {
             PatchRuntime.isBehaviourDispatchPatchAvailable(),
             PatchRuntime.isCrafterSignalPatchAvailable(),
             PatchRuntime.isRedstoneLinkPatchAvailable(),
-            PatchRuntime.isCapabilityGuardAvailable()
+            PatchRuntime.isCapabilityGuardAvailable(),
+            ArcadiaMixinPlugin.isCopycatMaterialTargetCompatible()
         );
     }
 
