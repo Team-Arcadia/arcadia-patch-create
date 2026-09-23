@@ -51,6 +51,8 @@ public final class ArcadiaMixinPlugin implements IMixinConfigPlugin {
 
     private static final String COPYCAT_MATERIAL_STORAGE =
         "com.copycatsplus.copycats.foundation.copycat.multistate.MaterialItemStorage";
+    private static final String IRONS_ALCHEMIST_CAULDRON =
+        "io.redspace.ironsspellbooks.block.alchemist_cauldron.AlchemistCauldronTile";
 
     // Fingerprint the exact implementations whose remaining bytecode is skipped or
     // whose result is reused. A future upstream build may keep every signature while
@@ -153,6 +155,7 @@ public final class ArcadiaMixinPlugin implements IMixinConfigPlugin {
             case "MixinMechanicalCrafterBlock", "MixinMechanicalCrafterBlockEntity" ->
                 isCrafterSignalTargetCompatible();
             case "MixinCopycatMaterialItemStorage" -> isCopycatMaterialTargetCompatible();
+            case "MixinIronsAlchemistCauldron" -> isIronsCauldronTargetCompatible();
             default -> true;
         };
     }
@@ -228,6 +231,14 @@ public final class ArcadiaMixinPlugin implements IMixinConfigPlugin {
         return shape(COPYCAT_MATERIAL_STORAGE).hasMethod(new Member(
             "getMaterialItem",
             "(Ljava/lang/String;)Lcom/copycatsplus/copycats/foundation/copycat/multistate/MaterialItemStorage$MaterialItem;"
+        ));
+    }
+
+    /** Iron's Spells is optional; only the ink lookup signature is checked. */
+    public static boolean isIronsCauldronTargetCompatible() {
+        return shape(IRONS_ALCHEMIST_CAULDRON).hasMethod(new Member(
+            "getInkFromScroll",
+            "(Lnet/minecraft/world/item/ItemStack;)Lio/redspace/ironsspellbooks/item/InkItem;"
         ));
     }
 
